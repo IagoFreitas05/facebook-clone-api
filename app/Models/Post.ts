@@ -10,6 +10,9 @@ export default class Post extends BaseModel {
   @column()
   public description: string;
 
+  @column({serializeAs : null})
+  public userId: number;
+
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime;
 
@@ -22,7 +25,7 @@ export default class Post extends BaseModel {
     onQuery: (query) => query.where("fileCategory","post")
   })
 
-  public midia: HasOne<typeof File>;
+  public media: HasOne<typeof File>;
 
   @belongsTo(() => User)
   public user: BelongsTo<typeof User>;
